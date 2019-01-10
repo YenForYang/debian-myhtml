@@ -1,0 +1,790 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package libmyhtml
+dpkg-buildpackage: info: source version 4.0.5
+dpkg-buildpackage: info: source distribution stable
+dpkg-buildpackage: info: source changed by Alexander Borisov <lex.borisov@gmail.com>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean --parallel --buildsystem=cmake
+   dh_auto_clean -O--parallel -O--buildsystem=cmake
+	rm -rf obj-x86_64-linux-gnu
+   dh_clean -O--parallel -O--buildsystem=cmake
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f debian/libmyhtml-dev.debhelper.log debian/libmyhtml.debhelper.log
+	rm -f -- debian/libmyhtml.substvars debian/libmyhtml-dev.substvars debian/files
+	rm -fr -- debian/libmyhtml/ debian/tmp/ debian/libmyhtml-dev/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=1746246279 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build --parallel --buildsystem=cmake
+   dh_update_autotools_config -O--parallel -O--buildsystem=cmake
+   debian/rules override_dh_auto_configure
+make[1]: Entering directory '/dev/shm/myhtml/myhtml'
+dh_auto_configure  -- -DCMAKE_AR=/usr/local/bin/xiar.pl -DCMAKE_LINKER=/opt/intel/bin/xild -DCMAKE_C_COMPILER=/usr/local/bin/icc.pl -DCMAKE_CXX_COMPILER=/usr/local/bin/icpc.pl
+	install -d obj-x86_64-linux-gnu
+	cd obj-x86_64-linux-gnu && cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var -DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON -DCMAKE_FIND_PACKAGE_NO_PACKAGE_REGISTRY=ON "-GUnix Makefiles" -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_C_COMPILER=icc.pl -DCMAKE_CXX_COMPILER=icpc.pl -DCMAKE_INSTALL_LIBDIR=lib/x86_64-linux-gnu -DCMAKE_AR=/usr/local/bin/xiar.pl -DCMAKE_LINKER=/opt/intel/bin/xild -DCMAKE_C_COMPILER=/usr/local/bin/icc.pl -DCMAKE_CXX_COMPILER=/usr/local/bin/icpc.pl ..
+cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by cmake)
+cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+-- The C compiler identification is Intel 19.0.0.20181018
+-- The CXX compiler identification is Intel 19.0.0.20181018
+-- Check for working C compiler: /usr/local/bin/icc.pl
+-- Check for working C compiler: /usr/local/bin/icc.pl -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/local/bin/icpc.pl
+-- Check for working CXX compiler: /usr/local/bin/icpc.pl -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - found
+-- Found Threads: TRUE  
+-- Project version: 4.0.5
+CMake Deprecation Warning at CMakeLists.txt:117 (cmake_policy):
+  The OLD behavior for policy CMP0042 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- Build with POSIX Threads
+-- mycore
+-- myencoding
+-- myhtml
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_EXPORT_NO_PACKAGE_REGISTRY
+    CMAKE_INSTALL_LOCALSTATEDIR
+    CMAKE_INSTALL_SYSCONFDIR
+
+
+-- Build files have been written to: /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu
+make[1]: Leaving directory '/dev/shm/myhtml/myhtml'
+   dh_auto_build -O--parallel -O--buildsystem=cmake
+	cd obj-x86_64-linux-gnu && make -j8
+make[1]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake -S/dev/shm/myhtml/myhtml -B/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake -E cmake_progress_start /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make -f CMakeFiles/Makefile2 all
+make[2]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml_static.dir/build.make CMakeFiles/myhtml_static.dir/depend
+make -f CMakeFiles/myhtml.dir/build.make CMakeFiles/myhtml.dir/depend
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+cd /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml_static.dir/DependInfo.cmake --color=
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+cd /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml.dir/DependInfo.cmake --color=
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+Scanning dependencies of target myhtml_static
+Scanning dependencies of target myhtml
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml_static.dir/build.make CMakeFiles/myhtml_static.dir/build
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml.dir/build.make CMakeFiles/myhtml.dir/build
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[  2%] Building C object CMakeFiles/myhtml.dir/source/mycore/myosi.c.o
+[  2%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/myosi.c.o
+[  4%] Building C object CMakeFiles/myhtml.dir/source/mycore/incoming.c.o
+[  4%] Building C object CMakeFiles/myhtml.dir/source/mycore/mystring.c.o
+[  7%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/mythread.c.o
+[  7%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/incoming.c.o
+[  9%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/mystring.c.o
+[  9%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/thread_queue.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/myosi.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/myosi.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/myosi.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/myosi.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/incoming.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/incoming.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/mystring.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/mystring.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/mythread.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/mythread.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/incoming.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/incoming.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/thread_queue.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/thread_queue.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 12%] Building C object CMakeFiles/myhtml.dir/source/mycore/mythread.c.o
+[ 12%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/mythread.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/mythread.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils.c
+[ 13%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mchar_async.c.o
+[ 14%] Building C object CMakeFiles/myhtml.dir/source/mycore/thread_queue.c.o
+[ 15%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/avl_tree.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mchar_async.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mchar_async.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/thread_queue.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/thread_queue.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/avl_tree.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/avl_tree.c
+[ 17%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcobject.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 18%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils.c
+[ 19%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject_async.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject_async.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcobject_async.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 20%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/avl_tree.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 21%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mchar_async.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/avl_tree.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/avl_tree.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mchar_async.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mchar_async.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 23%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mcobject.c.o
+[ 24%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mcobject_async.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mcobject.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcobject.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mcobject_async.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcobject_async.c
+[ 25%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsimple.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsimple.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcsimple.c
+[ 26%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mctree.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mctree.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mctree.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 28%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsync.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsync.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcsync.c
+[ 29%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mcsimple.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mcsimple.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcsimple.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+[ 30%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mcsync.c.o
+[ 31%] Building C object CMakeFiles/myhtml_static.dir/source/mycore/utils/mhash.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mcsync.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mcsync.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/mycore/utils/mhash.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mhash.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+[ 32%] Building C object CMakeFiles/myhtml_static.dir/source/myencoding/detect.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 34%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mctree.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myencoding/detect.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/detect.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mctree.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mctree.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+[ 35%] Building C object CMakeFiles/myhtml_static.dir/source/myencoding/encoding.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+[ 36%] Building C object CMakeFiles/myhtml_static.dir/source/myencoding/mystring.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myencoding/encoding.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/encoding.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myencoding/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/mystring.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 37%] Building C object CMakeFiles/myhtml.dir/source/mycore/utils/mhash.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 39%] Building C object CMakeFiles/myhtml.dir/source/myencoding/detect.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/mycore/utils/mhash.c.o   -c /dev/shm/myhtml/myhtml/source/mycore/utils/mhash.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myencoding/detect.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/detect.c
+icc: command line warning #10159: invalid argument for option '--std'
+[ 40%] Building C object CMakeFiles/myhtml.dir/source/myencoding/encoding.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myencoding/encoding.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/encoding.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 41%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/callback.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/callback.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/callback.c
+icc: command line warning #10159: invalid argument for option '--std'
+[ 42%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/charef.c.o
+[ 43%] Building C object CMakeFiles/myhtml.dir/source/myencoding/mystring.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/charef.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/charef.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myencoding/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/myencoding/mystring.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 45%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/data_process.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/data_process.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/data_process.c
+[ 46%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/myhtml.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/myhtml.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/myhtml.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 47%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/mynamespace.c.o
+[ 48%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/mystring.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/mystring.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/mynamespace.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/mynamespace.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 50%] Building C object CMakeFiles/myhtml.dir/source/myhtml/callback.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 51%] Building C object CMakeFiles/myhtml.dir/source/myhtml/charef.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/callback.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/callback.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/charef.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/charef.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 52%] Building C object CMakeFiles/myhtml.dir/source/myhtml/myhtml.c.o
+[ 53%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/parser.c.o
+[ 54%] Building C object CMakeFiles/myhtml.dir/source/myhtml/data_process.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/myhtml.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/myhtml.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/parser.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/parser.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 56%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/rules.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/data_process.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/data_process.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/rules.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/rules.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 57%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/serialization.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/serialization.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/serialization.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 58%] Building C object CMakeFiles/myhtml.dir/source/myhtml/mynamespace.c.o
+[ 59%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/stream.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/mynamespace.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/mynamespace.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/stream.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/stream.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 60%] Building C object CMakeFiles/myhtml.dir/source/myhtml/mystring.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/mystring.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/mystring.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+[ 62%] Building C object CMakeFiles/myhtml.dir/source/myhtml/parser.c.o
+[ 63%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tag.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/parser.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/parser.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tag.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tag.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 64%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tag_init.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tag_init.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tag_init.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 65%] Building C object CMakeFiles/myhtml.dir/source/myhtml/rules.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/rules.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/rules.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 67%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/token.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/token.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/token.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 68%] Building C object CMakeFiles/myhtml.dir/source/myhtml/serialization.c.o
+[ 69%] Building C object CMakeFiles/myhtml.dir/source/myhtml/stream.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/serialization.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/serialization.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/stream.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/stream.c
+[ 70%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer.c
+[ 71%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_doctype.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 73%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_end.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_doctype.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_doctype.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_end.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_end.c
+icc: command line warning #10159: invalid argument for option '--std'
+[ 74%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tag.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tag.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tag.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 75%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tag_init.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tag_init.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tag_init.c
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+[ 76%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_script.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_script.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_script.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+[ 78%] Building C object CMakeFiles/myhtml_static.dir/source/myhtml/tree.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myhtml/tree.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tree.c
+[ 79%] Building C object CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/io.c.o
+[ 80%] Building C object CMakeFiles/myhtml.dir/source/myhtml/token.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/io.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/io.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/token.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/token.c
+[ 81%] Building C object CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/memory.c.o
+[ 82%] Building C object CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/perf.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/memory.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/memory.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/perf.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/perf.c
+icc: command line warning #10159: invalid argument for option '--std'
+[ 84%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tokenizer.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tokenizer.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 85%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tokenizer_doctype.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_doctype.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_doctype.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 86%] Building C object CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/thread.c.o
+[ 87%] Building C object CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/utils/mcsync.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/thread.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/thread.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC   -o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/utils/mcsync.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/utils/mcsync.c
+[ 89%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tokenizer_end.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_end.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_end.c
+[ 90%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tokenizer_script.c.o
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 91%] Building C object CMakeFiles/myhtml.dir/source/myport/posix/mycore/io.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_script.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tokenizer_script.c
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myport/posix/mycore/io.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/io.c
+[ 92%] Building C object CMakeFiles/myhtml.dir/source/myhtml/tree.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myhtml/tree.c.o   -c /dev/shm/myhtml/myhtml/source/myhtml/tree.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 93%] Building C object CMakeFiles/myhtml.dir/source/myport/posix/mycore/memory.c.o
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myport/posix/mycore/memory.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/memory.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 95%] Building C object CMakeFiles/myhtml.dir/source/myport/posix/mycore/perf.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myport/posix/mycore/perf.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/perf.c
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+[ 96%] Building C object CMakeFiles/myhtml.dir/source/myport/posix/mycore/thread.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myport/posix/mycore/thread.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/thread.c
+[ 97%] Linking C static library libmyhtml_static.a
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake -P CMakeFiles/myhtml_static.dir/cmake_clean_target.cmake
+[ 98%] Building C object CMakeFiles/myhtml.dir/source/myport/posix/mycore/utils/mcsync.c.o
+/usr/local/bin/icc.pl -D_POSIX_C_SOURCE=199309L -Dmyhtml_EXPORTS -I/dev/shm/myhtml/myhtml/include  -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC -fPIC   -o CMakeFiles/myhtml.dir/source/myport/posix/mycore/utils/mcsync.c.o   -c /dev/shm/myhtml/myhtml/source/myport/posix/mycore/utils/mcsync.c
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+icc: command line warning #10159: invalid argument for option '--std'
+icc: command line warning #10159: invalid argument for option '--std'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake -E cmake_link_script CMakeFiles/myhtml_static.dir/link.txt --verbose=1
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[100%] Linking C shared library libmyhtml.so
+/usr/bin/cmake -E cmake_link_script CMakeFiles/myhtml.dir/link.txt --verbose=1
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/local/bin/xiar.pl qc libmyhtml_static.a  CMakeFiles/myhtml_static.dir/source/mycore/incoming.c.o CMakeFiles/myhtml_static.dir/source/mycore/myosi.c.o CMakeFiles/myhtml_static.dir/source/mycore/mystring.c.o CMakeFiles/myhtml_static.dir/source/mycore/mythread.c.o CMakeFiles/myhtml_static.dir/source/mycore/thread_queue.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/avl_tree.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mchar_async.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcobject_async.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsimple.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mcsync.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mctree.c.o CMakeFiles/myhtml_static.dir/source/mycore/utils/mhash.c.o CMakeFiles/myhtml_static.dir/source/myencoding/detect.c.o CMakeFiles/myhtml_static.dir/source/myencoding/encoding.c.o CMakeFiles/myhtml_static.dir/source/myencoding/mystring.c.o CMakeFiles/myhtml_static.dir/source/myhtml/callback.c.o CMakeFiles/myhtml_static.dir/source/myhtml/charef.c.o CMakeFiles/myhtml_static.dir/source/myhtml/data_process.c.o CMakeFiles/myhtml_static.dir/source/myhtml/myhtml.c.o CMakeFiles/myhtml_static.dir/source/myhtml/mynamespace.c.o CMakeFiles/myhtml_static.dir/source/myhtml/mystring.c.o CMakeFiles/myhtml_static.dir/source/myhtml/parser.c.o CMakeFiles/myhtml_static.dir/source/myhtml/rules.c.o CMakeFiles/myhtml_static.dir/source/myhtml/serialization.c.o CMakeFiles/myhtml_static.dir/source/myhtml/stream.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tag.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tag_init.c.o CMakeFiles/myhtml_static.dir/source/myhtml/token.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_doctype.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_end.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tokenizer_script.c.o CMakeFiles/myhtml_static.dir/source/myhtml/tree.c.o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/io.c.o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/memory.c.o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/perf.c.o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/thread.c.o CMakeFiles/myhtml_static.dir/source/myport/posix/mycore/utils/mcsync.c.o
+/usr/local/bin/icc.pl -fPIC -g -O2 -fdebug-prefix-map=/dev/shm/myhtml/myhtml=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2 -O2 -Wall --std=c99 -fPIC  -shared -Wl,-soname,libmyhtml.so.4 -o libmyhtml.so.4.0.5 CMakeFiles/myhtml.dir/source/mycore/incoming.c.o CMakeFiles/myhtml.dir/source/mycore/myosi.c.o CMakeFiles/myhtml.dir/source/mycore/mystring.c.o CMakeFiles/myhtml.dir/source/mycore/mythread.c.o CMakeFiles/myhtml.dir/source/mycore/thread_queue.c.o CMakeFiles/myhtml.dir/source/mycore/utils.c.o CMakeFiles/myhtml.dir/source/mycore/utils/avl_tree.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mchar_async.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mcobject.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mcobject_async.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mcsimple.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mcsync.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mctree.c.o CMakeFiles/myhtml.dir/source/mycore/utils/mhash.c.o CMakeFiles/myhtml.dir/source/myencoding/detect.c.o CMakeFiles/myhtml.dir/source/myencoding/encoding.c.o CMakeFiles/myhtml.dir/source/myencoding/mystring.c.o CMakeFiles/myhtml.dir/source/myhtml/callback.c.o CMakeFiles/myhtml.dir/source/myhtml/charef.c.o CMakeFiles/myhtml.dir/source/myhtml/data_process.c.o CMakeFiles/myhtml.dir/source/myhtml/myhtml.c.o CMakeFiles/myhtml.dir/source/myhtml/mynamespace.c.o CMakeFiles/myhtml.dir/source/myhtml/mystring.c.o CMakeFiles/myhtml.dir/source/myhtml/parser.c.o CMakeFiles/myhtml.dir/source/myhtml/rules.c.o CMakeFiles/myhtml.dir/source/myhtml/serialization.c.o CMakeFiles/myhtml.dir/source/myhtml/stream.c.o CMakeFiles/myhtml.dir/source/myhtml/tag.c.o CMakeFiles/myhtml.dir/source/myhtml/tag_init.c.o CMakeFiles/myhtml.dir/source/myhtml/token.c.o CMakeFiles/myhtml.dir/source/myhtml/tokenizer.c.o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_doctype.c.o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_end.c.o CMakeFiles/myhtml.dir/source/myhtml/tokenizer_script.c.o CMakeFiles/myhtml.dir/source/myhtml/tree.c.o CMakeFiles/myhtml.dir/source/myport/posix/mycore/io.c.o CMakeFiles/myhtml.dir/source/myport/posix/mycore/memory.c.o CMakeFiles/myhtml.dir/source/myport/posix/mycore/perf.c.o CMakeFiles/myhtml.dir/source/myport/posix/mycore/thread.c.o CMakeFiles/myhtml.dir/source/myport/posix/mycore/utils/mcsync.c.o 
+icc: command line warning #10159: invalid argument for option '--std'
+xiar: executing 'ar'
+ar: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/ranlib libmyhtml_static.a
+/usr/bin/ranlib: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[100%] Built target myhtml_static
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+/usr/bin/cmake -E cmake_symlink_library libmyhtml.so.4.0.5 libmyhtml.so.4 libmyhtml.so
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[100%] Built target myhtml
+make[2]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_start /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles 0
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make[1]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+   dh_auto_test -O--parallel -O--buildsystem=cmake
+ fakeroot debian/rules binary
+dh binary --parallel --buildsystem=cmake
+   dh_auto_test -O--parallel -O--buildsystem=cmake
+   dh_testroot -O--parallel -O--buildsystem=cmake
+   dh_prep -O--parallel -O--buildsystem=cmake
+	rm -f -- debian/libmyhtml.substvars debian/libmyhtml-dev.substvars
+	rm -fr -- debian/.debhelper/generated/libmyhtml/ debian/libmyhtml/ debian/tmp/ debian/.debhelper/generated/libmyhtml-dev/ debian/libmyhtml-dev/
+   dh_installdirs -O--parallel -O--buildsystem=cmake
+	install -d debian/libmyhtml
+	install -d debian/libmyhtml-dev
+   dh_auto_install -O--parallel -O--buildsystem=cmake
+	cd obj-x86_64-linux-gnu && make -j8 install DESTDIR=/dev/shm/myhtml/myhtml/debian/tmp AM_UPDATE_INFO_DIR=no
+make[1]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake -S/dev/shm/myhtml/myhtml -B/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake -E cmake_progress_start /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/progress.marks
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make -f CMakeFiles/Makefile2 all
+make[2]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml_static.dir/build.make CMakeFiles/myhtml_static.dir/depend
+make -f CMakeFiles/myhtml.dir/build.make CMakeFiles/myhtml.dir/depend
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+cd /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml_static.dir/DependInfo.cmake --color=
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+cd /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml.dir/DependInfo.cmake --color=
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml_static.dir/build.make CMakeFiles/myhtml_static.dir/build
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make -f CMakeFiles/myhtml.dir/build.make CMakeFiles/myhtml.dir/build
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/myhtml_static.dir/build'.
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make[3]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make[3]: Nothing to be done for 'CMakeFiles/myhtml.dir/build'.
+make[3]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+[ 76%] Built target myhtml_static
+[100%] Built target myhtml
+make[2]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake -E cmake_progress_start /dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles 0
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+make -f CMakeFiles/Makefile2 preinstall
+make[2]: Entering directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+make[2]: Nothing to be done for 'preinstall'.
+make[2]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+Install the project...
+/usr/bin/cmake -P cmake_install.cmake
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/bin/cmake)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+/usr/bin/cmake: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libxml2.so.2)
+-- Install configuration: "None"
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/resources.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mhash.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mctree.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mcsync.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mcsimple.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mcobject_async.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mcobject.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/mchar_async.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils/avl_tree.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/utils.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/thread_queue.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/perf.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/mythread.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/mystring.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/myosi.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/mycore/incoming.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding/resource.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding/mystring.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding/myosi.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding/encoding.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myencoding/detect_resource.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tree.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tokenizer_script.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tokenizer_end.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tokenizer_doctype.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tokenizer.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/token.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tag_const.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/tag.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/stream.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/serialization.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/rules.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/parser.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/mystring.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/myosi.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/mynamespace_resource.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/mynamespace.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/myhtml.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/def.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/data_process.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/charef_resource.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/charef.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/callback.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/include/myhtml/api.h
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/lib/x86_64-linux-gnu/libmyhtml.so.4.0.5
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/lib/x86_64-linux-gnu/libmyhtml.so.4
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/lib/x86_64-linux-gnu/libmyhtml.so
+-- Installing: /dev/shm/myhtml/myhtml/debian/tmp/usr/lib/x86_64-linux-gnu/libmyhtml_static.a
+make[1]: Leaving directory '/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu'
+   dh_install -O--parallel -O--buildsystem=cmake
+dh_install: Cannot find (any matches for) "usr/lib/libmyhtml.so.*" (tried in ., debian/tmp)
+
+dh_install: libmyhtml missing files: usr/lib/libmyhtml.so.*
+dh_install: Cannot find (any matches for) "usr/lib/libmyhtml.so" (tried in ., debian/tmp)
+
+dh_install: libmyhtml-dev missing files: usr/lib/libmyhtml.so
+dh_install: Cannot find (any matches for) "usr/lib/libmyhtml_static.a" (tried in ., debian/tmp)
+
+dh_install: libmyhtml-dev missing files: usr/lib/libmyhtml_static.a
+dh_install: missing files, aborting
+	install -d debian/.debhelper/generated/libmyhtml
+	install -d debian/.debhelper/generated/libmyhtml-dev
+make: *** [debian/rules:7: binary] Error 25
+FAKEROOTKEY=1238006910 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules binary
+ dpkg-genbuildinfo --build=binary
+dpkg-genbuildinfo: error: binary build with no binary artifacts found; .buildinfo is meaningless
+dpkg-buildpackage: error: dpkg-genbuildinfo --build=binary subprocess returned exit status 25

@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+%:
+	dh $@ --parallel --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure  -- -DCMAKE_AR=/usr/local/bin/xiar.pl -DCMAKE_LINKER=/opt/intel/bin/xild -DCMAKE_C_COMPILER=/usr/local/bin/icc.pl -DCMAKE_CXX_COMPILER=/usr/local/bin/icpc.pl

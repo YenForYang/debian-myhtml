@@ -1,0 +1,35 @@
+Format: 1.8
+Date: Tue, 21 Mar 2017 14:46:45 +0200
+Source: libmyhtml
+Binary: libmyhtml libmyhtml-dev
+Architecture: source amd64
+Version: 4.0.5
+Distribution: stable
+Urgency: medium
+Maintainer: Alexander Fedyashov <a@fedyashov.com>
+Changed-By: Alexander Borisov <lex.borisov@gmail.com>
+Description:
+ libmyhtml  - Libhtml utility library
+ libmyhtml-dev - Development files for libmyhtml
+Changes:
+ libmyhtml (4.0.5) stable; urgency=medium
+ .
+   * Initial release
+Checksums-Sha1:
+ 2f42673976f5eb82ea3526704ff818d5fb23afb2 735 libmyhtml_4.0.5.dsc
+ 9a9f7b85553cb37eb9a775ee37ec3abe466c7edc 940540 libmyhtml_4.0.5.tar.xz
+ 1201b7d216b48e4b92f7b9056328d9b0a3ab50ef 13416 libmyhtml-dbgsym_4.0.5_amd64.deb
+ 7918578fa409501c64671bdb06054bb137013fb8 513988 libmyhtml-dev_4.0.5_amd64.deb
+ cc6b17c13e9be24e905bc0ee8279add01a093efd 317312 libmyhtml_4.0.5_amd64.deb
+Checksums-Sha256:
+ 12fac9b0853660c498ee7f01a45d946c7f591ec455bc9ce5d8230e5ea491aa4a 735 libmyhtml_4.0.5.dsc
+ f39738610a45034cc98ce104d21d52c8e5f91ffa60d101b678adb9122dc3ba28 940540 libmyhtml_4.0.5.tar.xz
+ 1a9d3140bb24951270139c0a7ac461ccfadaf9659deb15d5cd6a57c90917d565 13416 libmyhtml-dbgsym_4.0.5_amd64.deb
+ 916c662d3bca7ba81fb3c709291e94e12307dde76377f9a464612498bac3eccb 513988 libmyhtml-dev_4.0.5_amd64.deb
+ 563eaf7ecf0fa772abf2911e68f7ed9429ac97648854ce6a23760d52c452b3fd 317312 libmyhtml_4.0.5_amd64.deb
+Files:
+ 95809ce617ba2542c5b3b053f0de2292 735 libs optional libmyhtml_4.0.5.dsc
+ cccdf3b80df1438ece8817e0c8ad86a7 940540 libs optional libmyhtml_4.0.5.tar.xz
+ b38cc180ee7f41e44828cdb95c9dbae2 13416 debug optional libmyhtml-dbgsym_4.0.5_amd64.deb
+ d86b7a5e4576578f2ac332125ed88930 513988 libdevel optional libmyhtml-dev_4.0.5_amd64.deb
+ c5a0679e551029678a67582433084923 317312 libs optional libmyhtml_4.0.5_amd64.deb

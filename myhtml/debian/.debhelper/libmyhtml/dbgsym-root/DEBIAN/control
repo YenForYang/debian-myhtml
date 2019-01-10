@@ -1,0 +1,13 @@
+Package: libmyhtml-dbgsym
+Source: libmyhtml
+Version: 4.0.5
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Alexander Fedyashov <a@fedyashov.com>
+Installed-Size: 70
+Depends: libmyhtml (= 4.0.5)
+Section: debug
+Priority: optional
+Multi-Arch: same
+Description: debug symbols for libmyhtml
+Build-Ids: 0fa177b311c97047ade012a81b6832e084521f8c

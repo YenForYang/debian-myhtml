@@ -1,0 +1,5 @@
+debian/tmp/usr/include/
+debian/tmp/usr/include/
+debian/tmp/usr/include/
+debian/tmp/usr/lib/libmyhtml.so
+debian/tmp/usr/lib/libmyhtml_static.a

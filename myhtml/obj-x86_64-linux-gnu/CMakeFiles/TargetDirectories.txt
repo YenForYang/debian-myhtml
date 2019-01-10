@@ -1,0 +1,10 @@
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/install/local.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/install.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/install/strip.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml_static.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/edit_cache.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/list_install_components.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/myhtml.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/package.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/package_source.dir
+/dev/shm/myhtml/myhtml/obj-x86_64-linux-gnu/CMakeFiles/rebuild_cache.dir

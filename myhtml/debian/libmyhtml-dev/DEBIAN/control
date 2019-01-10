@@ -1,0 +1,12 @@
+Package: libmyhtml-dev
+Source: libmyhtml
+Version: 4.0.5
+Architecture: amd64
+Maintainer: Alexander Fedyashov <a@fedyashov.com>
+Installed-Size: 4318
+Depends: libmyhtml (= 4.0.5)
+Section: libdevel
+Priority: optional
+Homepage: https://github.com/lexborisov/myhtml
+Description: Development files for libmyhtml
+ MyHTML is a fast HTML Parser implemented as a pure C99 library.

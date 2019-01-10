@@ -1,0 +1,3 @@
+libmyhtml-dbgsym_4.0.5_amd64.deb debug optional automatic=yes
+libmyhtml-dev_4.0.5_amd64.deb libdevel optional
+libmyhtml_4.0.5_amd64.deb libs optional
